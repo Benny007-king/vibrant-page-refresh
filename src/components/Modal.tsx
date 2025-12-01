@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,9 +9,12 @@ interface ModalProps {
 }
 
 const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+  const [isClosing, setIsClosing] = useState(false);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setIsClosing(false);
     } else {
       document.body.style.overflow = '';
     }
@@ -20,24 +23,37 @@ const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
     };
   }, [isOpen]);
 
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 250);
+  };
+
   if (!isOpen) return null;
 
   return (
     <div
-      className="modal-overlay animate-fade-in"
+      className={`modal-overlay ${isClosing ? 'animate-fade-out' : ''}`}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) handleClose();
       }}
     >
-      <div className="modal-content animate-scale-in">
+      <div 
+        className={`modal-content ${isClosing ? 'animate-modal-out' : ''}`}
+      >
         <button
-          onClick={onClose}
-          className="absolute top-4 left-4 text-muted-foreground hover:text-white transition-colors"
+          onClick={handleClose}
+          className="modal-close-btn"
+          aria-label="סגור"
         >
-          <X size={24} />
+          <X size={20} />
         </button>
-        <h2 className="text-2xl font-bold text-white mb-6 font-rubik">{title}</h2>
-        {children}
+        <h2 className="text-2xl font-bold text-white mb-6 font-rubik gradient-text">{title}</h2>
+        <div className="relative z-10">
+          {children}
+        </div>
       </div>
     </div>
   );
