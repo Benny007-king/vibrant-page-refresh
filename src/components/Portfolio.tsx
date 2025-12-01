@@ -1,0 +1,58 @@
+const projects = [
+  {
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    title: "ממשק ניהול מתקדם",
+    category: "UI/UX DESIGN",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=80",
+    title: "זהות ומיתוג עסקי",
+    category: "BRANDING",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+    title: "אפליקציית מובייל",
+    category: "MOBILE UI",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80",
+    title: "אתר תדמית",
+    category: "WEB DESIGN",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1200&q=80",
+    title: "חנות אונליין",
+    category: "ECOMMERCE",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=1200&q=80",
+    title: "קמפיין דיגיטלי",
+    category: "DIGITAL MARKETING",
+  },
+];
+
+const Portfolio = () => {
+  return (
+    <section id="work" className="py-24 px-[5%] bg-background">
+      <h2 className="section-title">פרויקטים נבחרים</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
+        {projects.map((project, index) => (
+          <article
+            key={index}
+            className="project-card group"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <img src={project.image} alt={project.title} loading="lazy" />
+            <div className="project-info">
+              <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
+              <span className="text-sm text-primary tracking-wider">{project.category}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;
