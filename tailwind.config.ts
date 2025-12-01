@@ -97,6 +97,52 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0)" },
         },
+        // Modal animations
+        "modal-overlay-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "modal-content-in": {
+          "0%": { 
+            opacity: "0", 
+            transform: "scale(0.8) translateY(20px)",
+            filter: "blur(10px)"
+          },
+          "100%": { 
+            opacity: "1", 
+            transform: "scale(1) translateY(0)",
+            filter: "blur(0px)"
+          },
+        },
+        "modal-slide-up": {
+          "0%": { 
+            opacity: "0", 
+            transform: "translateY(100px) scale(0.9)"
+          },
+          "50%": {
+            transform: "translateY(-10px) scale(1.02)"
+          },
+          "100%": { 
+            opacity: "1", 
+            transform: "translateY(0) scale(1)"
+          },
+        },
+        "glow-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(var(--col-blue) / 0.3), 0 0 40px hsl(var(--col-blue) / 0.1)"
+          },
+          "50%": { 
+            boxShadow: "0 0 30px hsl(var(--col-blue) / 0.5), 0 0 60px hsl(var(--col-blue) / 0.2)"
+          },
+        },
+        "border-glow": {
+          "0%, 100%": { 
+            borderColor: "hsl(var(--col-blue) / 0.3)"
+          },
+          "50%": { 
+            borderColor: "hsl(var(--col-blue) / 0.7)"
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +150,11 @@ export default {
         "fade-in": "fade-in 0.5s ease-out forwards",
         "scale-in": "scale-in 0.3s ease-out forwards",
         "slide-in-right": "slide-in-right 0.4s ease-out",
+        "modal-overlay": "modal-overlay-in 0.3s ease-out forwards",
+        "modal-content": "modal-content-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "modal-bounce": "modal-slide-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "border-glow": "border-glow 2s ease-in-out infinite",
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
