@@ -4,19 +4,21 @@ import Hero from '@/components/Hero';
 import Portfolio from '@/components/Portfolio';
 import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import AccessibilityWidget from '@/components/AccessibilityWidget';
 import Modal from '@/components/Modal';
 
 const Index = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [accessibilityOpen, setAccessibilityOpen] = useState(false);
 
   return (
     <div dir="rtl" className="min-h-screen bg-background">
-      <Header onOpenAbout={() => setAboutOpen(true)} />
+      <Header onOpenAbout={() => setAboutOpen(true)} onOpenResume={() => setResumeOpen(true)} />
       
       <main>
-        <Hero onOpenAbout={() => setAboutOpen(true)} />
+        <Hero onOpenAbout={() => setAboutOpen(true)} onOpenResume={() => setResumeOpen(true)} />
         <Portfolio />
       </main>
 
@@ -26,6 +28,7 @@ const Index = () => {
       />
       
       <FloatingWhatsApp />
+      <AccessibilityWidget onOpenStatement={() => setAccessibilityOpen(true)} />
 
       {/* About Modal */}
       <Modal
@@ -50,6 +53,43 @@ const Index = () => {
           <p className="font-semibold text-white">
             התמחויות: UI/UX Design, Web Development, Branding, Mobile Design
           </p>
+        </div>
+      </Modal>
+
+      {/* Resume Modal */}
+      <Modal
+        isOpen={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+        title="קורות חיים"
+      >
+        <div className="text-right leading-relaxed text-foreground">
+          <div className="mb-6">
+            <h4 className="font-bold text-white mb-2">ניסיון מקצועי</h4>
+            <div className="bg-secondary/20 p-4 rounded-lg mb-3">
+              <p className="font-semibold text-white">מעצב גרפי ומפתח אתרים</p>
+              <p className="text-sm text-muted-foreground">2020 - היום</p>
+              <p className="text-sm mt-2">עיצוב ופיתוח אתרים, מיתוג עסקי, עיצוב UI/UX</p>
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <h4 className="font-bold text-white mb-2">כישורים</h4>
+            <div className="flex flex-wrap gap-2">
+              {['Photoshop', 'Illustrator', 'Figma', 'HTML/CSS', 'JavaScript', 'React', 'WordPress'].map((skill) => (
+                <span key={skill} className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-bold text-white mb-2">השכלה</h4>
+            <div className="bg-secondary/20 p-4 rounded-lg">
+              <p className="font-semibold text-white">עיצוב גרפי ומולטימדיה</p>
+              <p className="text-sm text-muted-foreground">תעודת מקצוע</p>
+            </div>
+          </div>
         </div>
       </Modal>
 

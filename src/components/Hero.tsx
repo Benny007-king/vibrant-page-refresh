@@ -2,9 +2,10 @@ import { FaFacebookF, FaInstagram, FaPinterestP, FaTwitter, FaWhatsapp, FaBehanc
 
 interface HeroProps {
   onOpenAbout: () => void;
+  onOpenResume: () => void;
 }
 
-const Hero = ({ onOpenAbout }: HeroProps) => {
+const Hero = ({ onOpenAbout, onOpenResume }: HeroProps) => {
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -46,7 +47,7 @@ const Hero = ({ onOpenAbout }: HeroProps) => {
             <button onClick={scrollToWork} className="btn-main">
               Portfolio
             </button>
-            <button onClick={onOpenAbout} className="btn-main">
+            <button onClick={onOpenResume} className="btn-main">
               Resume
             </button>
           </div>
