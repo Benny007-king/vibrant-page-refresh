@@ -4,9 +4,10 @@ import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
 
 interface HeaderProps {
   onOpenAbout: () => void;
+  onOpenResume: () => void;
 }
 
-const Header = ({ onOpenAbout }: HeaderProps) => {
+const Header = ({ onOpenAbout, onOpenResume }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToWork = () => {
@@ -34,7 +35,7 @@ const Header = ({ onOpenAbout }: HeaderProps) => {
           <button onClick={onOpenAbout} className="nav-link font-medium text-sm tracking-wide">
             About
           </button>
-          <button onClick={scrollToWork} className="nav-link font-medium text-sm tracking-wide text-primary">
+          <button onClick={onOpenResume} className="nav-link font-medium text-sm tracking-wide text-primary">
             Resume
           </button>
           <button onClick={scrollToWork} className="nav-link font-medium text-sm tracking-wide">
