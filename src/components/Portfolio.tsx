@@ -1,3 +1,5 @@
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
 const projects = [
   {
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
@@ -32,16 +34,20 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section id="work" className="py-24 px-[5%] bg-background">
-      <h2 className="section-title">פרויקטים נבחרים</h2>
+    <section id="work" className="py-24 px-[5%] bg-background" ref={sectionRef}>
+      <h2 className={`section-title transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        פרויקטים נבחרים
+      </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1200px] mx-auto">
         {projects.map((project, index) => (
           <article
             key={index}
-            className="project-card group"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            className={`project-card group transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             <img src={project.image} alt={project.title} loading="lazy" />
             <div className="project-info">
