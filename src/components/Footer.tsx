@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
@@ -6,9 +7,11 @@ interface FooterProps {
 }
 
 const Footer = ({ onOpenPrivacy, onOpenAccessibility }: FooterProps) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <footer className="text-center py-16 border-t border-border/30 bg-card flex flex-col items-center gap-5">
-      <div className="flex gap-5 flex-wrap justify-center mb-2">
+    <footer ref={ref} className="text-center py-16 border-t border-border/30 bg-card flex flex-col items-center gap-5">
+      <div className={`flex gap-5 flex-wrap justify-center mb-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <button onClick={onOpenPrivacy} className="nav-link text-muted-foreground">
           מדיניות פרטיות
         </button>
@@ -18,7 +21,7 @@ const Footer = ({ onOpenPrivacy, onOpenAccessibility }: FooterProps) => {
         </button>
       </div>
 
-      <div className="flex gap-4">
+      <div className={`flex gap-4 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <a
           href="#"
           className="w-10 h-10 rounded-full flex items-center justify-center border border-border text-white transition-all hover:-translate-y-1 hover:bg-[hsl(220,89%,52%)] hover:border-[hsl(220,89%,52%)]"
@@ -33,7 +36,7 @@ const Footer = ({ onOpenPrivacy, onOpenAccessibility }: FooterProps) => {
         </a>
       </div>
 
-      <p className="text-muted-foreground text-sm mt-2">
+      <p className={`text-muted-foreground text-sm mt-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         © 2024 בני דניאל. כל הזכויות שמורות.
       </p>
     </footer>
