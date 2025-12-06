@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import AccessibilityWidget from '@/components/AccessibilityWidget';
 import Modal from '@/components/Modal';
+import profilePhoto from '@/assets/profile-photo.png';
 
 const Index = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -37,6 +38,15 @@ const Index = () => {
         title="בני דניאל - מעצב גרפי ומפתח"
       >
         <div className="text-right leading-relaxed text-foreground">
+          <div className="flex justify-center mb-6">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/30 shadow-lg shadow-primary/20">
+              <img 
+                src={profilePhoto} 
+                alt="בני דניאל" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
           <p className="mb-4">
             שלום! אני בני דניאל, מעצב ומפתח דיגיטלי עם התמחות בעיצוב חוויות
             משתמש, בניית אתרים ומיתוג עסקי.

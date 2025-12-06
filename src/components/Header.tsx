@@ -44,13 +44,26 @@ const Header = ({ onOpenAbout, onOpenResume }: HeaderProps) => {
         </nav>
 
         {/* Desktop Actions - Right */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-6">
+          <a
+            href="mailto:benny@example.com"
+            className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors group"
+          >
+            <Mail size={16} />
+            <span className="relative text-sm">
+              benny@example.com
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300" />
+            </span>
+          </a>
           <a
             href="tel:0537261618"
-            className="flex items-center gap-2 text-foreground/80 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors group"
           >
             <Phone size={16} />
-            <span className="text-sm">053-726-1618</span>
+            <span className="relative text-sm">
+              053-726-1618
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300" />
+            </span>
           </a>
         </div>
 
