@@ -46,13 +46,25 @@ const Portfolio = () => {
         {projects.map((project, index) => (
           <article
             key={index}
-            className={`project-card group transition-all duration-700 ${sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-            style={{ transitionDelay: `${index * 100}ms` }}
+            className={`project-card group transition-all duration-700 ${
+              sectionVisible 
+                ? 'opacity-100 translate-y-0 rotate-0 scale-100' 
+                : 'opacity-0 translate-y-16 rotate-2 scale-95'
+            }`}
+            style={{ transitionDelay: `${index * 150}ms` }}
           >
-            <img src={project.image} alt={project.title} loading="lazy" />
+            <div className="relative overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                loading="lazy"
+                className="transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
             <div className="project-info">
-              <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
-              <span className="text-sm text-primary tracking-wider">{project.category}</span>
+              <h3 className="text-xl font-bold text-white mb-1 transition-transform duration-300 group-hover:-translate-y-1">{project.title}</h3>
+              <span className="text-sm text-primary tracking-wider transition-all duration-300 group-hover:tracking-widest">{project.category}</span>
             </div>
           </article>
         ))}
