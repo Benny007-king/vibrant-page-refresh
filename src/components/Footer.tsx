@@ -1,4 +1,5 @@
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { Phone, Mail } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface FooterProps {
@@ -11,7 +12,31 @@ const Footer = ({ onOpenPrivacy, onOpenAccessibility }: FooterProps) => {
 
   return (
     <footer ref={ref} className="text-center py-16 border-t border-border/30 bg-card flex flex-col items-center gap-5">
-      <div className={`flex gap-5 flex-wrap justify-center mb-2 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      {/* Contact Info */}
+      <div className={`flex gap-8 flex-wrap justify-center mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <a 
+          href="tel:+972537261618" 
+          className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors group"
+        >
+          <Phone size={18} />
+          <span className="relative">
+            053-726-1618
+            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300" />
+          </span>
+        </a>
+        <a 
+          href="mailto:benny@example.com" 
+          className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors group"
+        >
+          <Mail size={18} />
+          <span className="relative">
+            benny@example.com
+            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-right group-hover:origin-left duration-300" />
+          </span>
+        </a>
+      </div>
+
+      <div className={`flex gap-5 flex-wrap justify-center mb-2 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <button onClick={onOpenPrivacy} className="nav-link text-muted-foreground">
           מדיניות פרטיות
         </button>
@@ -21,22 +46,22 @@ const Footer = ({ onOpenPrivacy, onOpenAccessibility }: FooterProps) => {
         </button>
       </div>
 
-      <div className={`flex gap-4 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <div className={`flex gap-4 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         <a
           href="#"
-          className="w-10 h-10 rounded-full flex items-center justify-center border border-border text-white transition-all hover:-translate-y-1 hover:bg-[hsl(220,89%,52%)] hover:border-[hsl(220,89%,52%)]"
+          className="w-10 h-10 rounded-full flex items-center justify-center border border-border text-foreground transition-all hover:-translate-y-1 hover:bg-[hsl(220,89%,52%)] hover:border-[hsl(220,89%,52%)]"
         >
           <FaFacebookF size={16} />
         </a>
         <a
           href="#"
-          className="w-10 h-10 rounded-full flex items-center justify-center border border-border text-white transition-all hover:-translate-y-1 hover:bg-[hsl(340,75%,54%)] hover:border-[hsl(340,75%,54%)]"
+          className="w-10 h-10 rounded-full flex items-center justify-center border border-border text-foreground transition-all hover:-translate-y-1 hover:bg-[hsl(340,75%,54%)] hover:border-[hsl(340,75%,54%)]"
         >
           <FaInstagram size={16} />
         </a>
       </div>
 
-      <p className={`text-muted-foreground text-sm mt-2 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+      <p className={`text-muted-foreground text-sm mt-2 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
         © 2024 בני דניאל. כל הזכויות שמורות.
       </p>
     </footer>

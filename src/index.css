@@ -370,3 +370,20 @@
     animation-delay: 0.6s;
   }
 }
+
+/* Highlight Links Mode */
+body.highlight-links a,
+body.highlight-links button {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px;
+  background-color: hsl(var(--primary) / 0.1) !important;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  filter: contrast(1.25);
+}
+
+body.high-contrast * {
+  border-color: hsl(var(--foreground)) !important;
+}
